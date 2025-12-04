@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float gravity = 17;
     [SerializeField] private float distanceBetweenLines = 5;
     [SerializeField] private int health = 3;
+    [SerializeField] private int maxHealth = 3;
     [SerializeField] private int currentLine = 1;
     [SerializeField] private bool isIndestructible = false;
     [SerializeField] private float indestructibleTimeAfterHit = 0.2f;
@@ -102,7 +103,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("heartBonus"))
         {
-            if (health < 3) gm.UpdateHealth(++health);
+            if (health < maxHealth) gm.UpdateHealth(++health);
         } else if (other.gameObject.CompareTag("indestructibleBonus"))
         {
             float duration = other.gameObject.GetComponent<IndestructibleBonus>().duration;
